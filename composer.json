@@ -1,0 +1,30 @@
+{
+    "name": "emmac/hello",
+    "description": "testing py",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Emmac\\Hello\\": "src/"
+        },
+        "files": [
+            "src/App/Configs/routes.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "emmanuelc",
+            "email": "camuschinox@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.8",
+        "twig/twig": "^3.0",
+        "erdemkose/generative-ai-php": "^1.4",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

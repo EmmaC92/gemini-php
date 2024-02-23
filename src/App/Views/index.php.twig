@@ -1,0 +1,14 @@
+<html>
+	<body>
+		<form method='POST' action='/'>
+			<label for="POST_TEXT_PARAM">Question:</label>
+			<input type="text" id="POST_TEXT_PARAM" name="POST_TEXT_PARAM" value="{{request}}">
+			<input type="submit" value="Enviar">
+			{% if response is not null %}
+				<p>
+					{{response}}
+				</p>
+			{% endif %}
+		</form>
+	</body>
+</html>
