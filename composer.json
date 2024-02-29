@@ -19,8 +19,10 @@
     "require": {
         "guzzlehttp/guzzle": "^7.8",
         "twig/twig": "^3.0",
-        "erdemkose/generative-ai-php": "^1.4",
-        "vlucas/phpdotenv": "^5.6"
+        "vlucas/phpdotenv": "^5.6",
+        "gemini-api-php/client": "^1.4",
+        "twig/markdown-extra": "^3.8",
+        "league/commonmark": "^2.4"
     },
     "config": {
         "allow-plugins": {

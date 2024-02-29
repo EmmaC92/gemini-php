@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Formulario con Estilo</title>
+		<title>Gemini AI</title>
 		<link rel="stylesheet" href="/assets/style.css">
 	</head>
 	<body>
@@ -19,7 +19,9 @@
 			</form>
 			{% if response is not null %}
 				<h2>Answer:</h2>
-				<p>{{response}}</p>
+				{% apply markdown_to_html %}
+					{{response}}
+				{% endapply %}
 			{% endif %}
 		</div>
 	</body>

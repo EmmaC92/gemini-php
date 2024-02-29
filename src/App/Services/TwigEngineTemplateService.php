@@ -5,6 +5,11 @@ declare(strict_types=1);
 namespace Emmac\Hello\App\Services;
 
 use Emmac\Hello\App\Contracts\EngineTemplateServiceInterface;
+use Twig\Extra\Markdown\MarkdownExtension;
+use Twig\Extra\Markdown\DefaultMarkdown;
+use Twig\Extra\Markdown\MarkdownRuntime;
+use Twig\RuntimeLoader\RuntimeLoaderInterface;
+
 use Twig\Loader\FilesystemLoader;
 use \Twig\Environment;
 
@@ -18,6 +23,16 @@ class TwigEngineTemplateService implements EngineTemplateServiceInterface
     ) {
         $this->setTemplateBasePath($templateBasePath);
         $this->twig = new Environment($this->loader, []);
+        $this->twig->addExtension(new MarkdownExtension());
+        $this->twig->addRuntimeLoader(new class implements RuntimeLoaderInterface
+        {
+            public function load($class)
+            {
+                if (MarkdownRuntime::class === $class) {
+                    return new MarkdownRuntime(new DefaultMarkdown());
+                }
+            }
+        });
     }
 
     public function getView(string $path,  array $params = []): string
