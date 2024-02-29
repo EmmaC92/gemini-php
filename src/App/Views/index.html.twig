@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Formulario con Estilo</title>
+		<link rel="stylesheet" href="/assets/style.css">
+	</head>
+	<body>
+		<div class="container">
+			<form action="/text" method="post">
+				<div class="input-group">
+					<label for="POST_TEXT_PARAM">Question:</label>
+					<input type="text" id="POST_TEXT_PARAM" name="POST_TEXT_PARAM" value={{request}}>
+				</div>
+				<div class="input-group">
+					<input type="submit" value="Send">
+				</div>
+			</form>
+			{% if response is not null %}
+				<h2>Answer:</h2>
+				<p>{{response}}</p>
+			{% endif %}
+		</div>
+	</body>
+</html>

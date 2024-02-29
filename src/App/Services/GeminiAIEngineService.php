@@ -10,20 +10,16 @@ use GeminiAPI\Resources\Parts\TextPart;
 
 class GeminiAIEngineService implements AIEngineServiceInterface
 {
-    private ?GeminiClient $client = null;
-
     public function __construct(
-        string $geminiApiKey
+        protected GeminiClient $geminiClient
     ) {
-        $this->client = new GeminiClient($geminiApiKey);
     }
-
     public function interact(string $input): string
     {
-        $response = $this->client->geminiPro()->generateContent(
+        $response = $this->geminiClient->geminiPro()->generateContent(
             new TextPart($input),
         );
-        
+
         return $response->text();
     }
 }

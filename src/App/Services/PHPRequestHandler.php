@@ -20,7 +20,7 @@ class PHPRequestHandler implements RequestHandlerInterface
     public function getRequest(string $param = null): string|bool
     {
         if (!$this->checkRequest($_POST[self::POST_TEXT_PARAM])) {
-            $this->viewsService->renderView('index.php.twig');
+            $this->viewsService->renderView('index.html.twig');
             exit;
         }
 

@@ -10,7 +10,7 @@ use Emmac\Hello\App\Contracts\{
     EngineTemplateServiceInterface,
 };
 
-class HomeController
+class GeminiController
 {
     public function __construct(
         protected AIEngineServiceInterface $aIEngineService,
@@ -19,13 +19,13 @@ class HomeController
     ) {
     }
 
-    public function index()
+    public function questionText()
     {
-        $requestText = $this->requestHandler->getRequest(); 
+        $requestText = $this->requestHandler->getRequest();
         $responseText = $this->aIEngineService->interact($requestText);
 
         $this->viewsService->renderView(
-            'index.php.twig',
+            'index.html.twig',
             [
                 'request' => $requestText,
                 'response' => $responseText

@@ -8,12 +8,14 @@ use Emmac\Hello\Framework\App;
 
 // controllers
 use Emmac\Hello\App\Controllers\{
-    HomeController
+    GeminiController,
 };
 
 function registerRoutes(App $app)
 {
-    // GET routes
-    $app->get('/', [HomeController::class, 'index']);
-    $app->post('/', [HomeController::class, 'index']);
+    // GET routes 
+    $app->get('/', [GeminiController::class, 'questionText']);
+
+    // POST routes
+    $app->post('/text', [GeminiController::class, 'questionText']);
 }

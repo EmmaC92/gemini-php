@@ -7,6 +7,7 @@ namespace Emmac\Hello\App\Configs;
 // framework and tools
 use Emmac\Hello\App\Configs\Paths;
 use Emmac\Hello\Framework\Container;
+use GeminiAPI\Client as GeminiClient;
 
 // contracts
 use Emmac\Hello\App\Contracts\{
@@ -27,8 +28,11 @@ $repositories = [];
 
 // Services
 $services = [
-    AIEngineServiceInterface::class => fn ()       => new GeminiAIEngineService($_ENV['GEMINI_API_KEY']),
-    RequestHandlerInterface::class => function (Container $container){
+    AIEngineServiceInterface::class => function () {
+        $geminiClient = new GeminiClient($_ENV['GEMINI_API_KEY']);
+        return new GeminiAIEngineService($geminiClient);
+    },
+    RequestHandlerInterface::class => function (Container $container) {
         $engineTemplateService = $container->get(EngineTemplateServiceInterface::class);
 
         return new PHPRequestHandler(
